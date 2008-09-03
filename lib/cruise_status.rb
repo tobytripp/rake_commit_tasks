@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby -wKU
+
 require 'rexml/document'
 require "open-uri"
 
@@ -21,5 +23,15 @@ class CruiseStatus
     }.map do |element|
       element.text.gsub( /(.*) build (.+) failed$/, '\1' )
     end
+  end
+end
+
+if __FILE__ == $PROGRAM_NAME
+  status = CruiseStatus.new ARGV.first
+  
+  unless status.pass?
+    puts "FAIL: #{status.failures.join( ', ' )}"
+  else
+    puts "OK"
   end
 end

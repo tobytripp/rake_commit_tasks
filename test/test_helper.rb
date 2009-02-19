@@ -3,6 +3,7 @@ unless defined?(TEST_HELPER_LOADED)
 
   require "rubygems"
   require "rake"
+  $LOAD_PATH.unshift File.expand_path( File.dirname(__FILE__) + "/../lib" )
   Dir.glob(File.dirname(__FILE__) + "/../tasks/**/*.rake").each { |rakefile| load rakefile }
 
   require "test/unit"

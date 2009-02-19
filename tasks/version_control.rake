@@ -1,3 +1,5 @@
+require "version_control/detect"
+
 namespace :vc do
   vc = VersionControl::Detect.detect
   

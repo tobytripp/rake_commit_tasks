@@ -15,5 +15,9 @@ module VersionControl
     def st
       %x[git diff --name-status]
     end
+    
+    def revert
+      %x[git reset --hard HEAD]
+    end
   end
 end
